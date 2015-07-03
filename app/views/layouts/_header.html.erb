@@ -1,0 +1,17 @@
+<% unless current_user %>
+  <%= link_to "SIgn In", sign_in_path %> |
+  <%= link_to "Sign Up", sign_up_path %>
+<% else %>
+  Hello: <%= current_user.email %> |
+  <% if current_user.business_owner? %>
+    <%= link_to "Profile", profile_path(current_user.profile) %> |
+    <%= link_to "Manage Business", businesses_path %> |
+    <%= link_to "Manage Discounts" %> |
+    <%= link_to "Manage Bookings" %> |
+    <%= link_to "Manage Customers" %> |
+    <%= link_to "Reports" %> |
+  <% else %>
+
+  <% end %>
+  <%= link_to "Sign Out", sign_out_path %>
+<% end %>

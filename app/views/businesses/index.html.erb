@@ -1,0 +1,33 @@
+<h1>My Businesses</h1>
+
+<table>
+  <tr>
+    <th>Business type</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Address</th>
+    <th>Tag line</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @businesses.each do |business| %>
+    <tr>
+      <td><%= business.business_type.name %></td>
+      <td><%= business.name %></td>
+      <td><%= business.description %></td>
+      <td><%= business.address %></td>
+      <td><%= business.tag_line %></td>
+      <td><%= link_to 'Products', products_path(:business_id => business.id) %></td>
+      <td><%= link_to 'Details', business %></td>
+      <td><%= link_to 'Edit', edit_business_path(business) %></td>
+      <td><%= link_to 'Destroy', business, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Business', new_business_path %>

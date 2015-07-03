@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h2>BASIC INFORMATION</h2>
+
+<p>
+  <b>First Name:</b>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <b>Last Name:</b>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @profile.phone %>
+</p>
+
+
+<p>
+  <b>Address:</b>
+  <%= @profile.address %>
+</p>
+
+<h2>DAILY OPEN HOURS:</h2>
+
+<p>
+  <b>Start AT:</b>
+  <%= @profile.start_at.strftime("%H:%m:%S") %>
+</p>
+
+<p>
+  <b>Close AT:</b>
+  <%= @profile.end_at.strftime("%H:%m:%S") %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

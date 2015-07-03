@@ -1,0 +1,26 @@
+<h1>Products</h1>
+
+<table>
+  <tr>
+    <th>Business</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= @business.name %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= link_to 'Details', product_path(:id => product.id, :business_id => @business.id) %></td>
+      <td><%= link_to 'Edit', edit_product_path(:id => product.id, :business_id => @business.id) %></td>
+      <td><%= link_to 'Destroy', product_path(:id => product.id, :business_id => @business.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Product', new_product_path(:business_id => @business.id) %>

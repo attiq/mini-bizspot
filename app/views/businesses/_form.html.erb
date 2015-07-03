@@ -1,0 +1,55 @@
+<%= form_for(@business) do |f| %>
+  <% if @business.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@business.errors.count, "error") %> prohibited this business from being saved:</h2>
+
+      <ul>
+        <% @business.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <h2>DETAILS:</h2>
+
+  <div class="field">
+    <%= f.label :business_type_id %><br/>
+    <%= f.select :business_type_id, options_from_collection_for_select(BusinessType.all, :id, :name, f.object.business_type_id) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br/>
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_line %><br/>
+    <%= f.text_field :tag_line %>
+  </div>
+
+  <h2>LOCATION ON MAP:</h2>
+
+  <div class="field">
+    <%= f.label :latitude %><br/>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br/>
+    <%= f.text_field :longitude %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
