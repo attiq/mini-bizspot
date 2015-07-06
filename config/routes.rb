@@ -1,5 +1,8 @@
 MiniBizspot::Application.routes.draw do
 
+  resources :offers
+
+
   resources :products
 
 
@@ -17,12 +20,14 @@ MiniBizspot::Application.routes.draw do
   end
   resources :home do
     collection do
-      get :business_owner_dashboard
-      get :customer_dashboard
+      get :products
+      get :offers
     end
   end
   resources :businesses
   resources :profiles
+  resources :customer_businesses
+  resources :customer_offers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -73,7 +78,7 @@ MiniBizspot::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'home#products'
 
   # See how all your routes lay out with "rake routes"
 

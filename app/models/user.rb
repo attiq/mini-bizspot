@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_one :profile
   has_many :businesses
+  has_many :offers
 
   accepts_nested_attributes_for :profile, :allow_destroy => true, :update_only => true
 

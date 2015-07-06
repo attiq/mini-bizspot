@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start at:</b>
+  <%= @offer.start_at %>
+</p>
+
+<p>
+  <b>End at:</b>
+  <%= @offer.end_at %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @offer.price %>
+</p>
+
+
+<b>Products:</b>
+<% @offer.products.each do |product| %>
+  <p>
+    <%= product.name %>
+  </p>
+<% end %>
+
+<p>
+  <b>Picture:</b>
+</p>
+<p>
+  <%= image_tag(@offer.asset.avatar.url(:medium)) %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<%= link_to 'Back', offers_path %>

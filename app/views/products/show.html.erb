@@ -17,6 +17,13 @@
   <%= @product.price %>
 </p>
 
+<p>
+  <b>Product Picture:</b>
+</p>
+<p>
+  <%= image_tag(@product.asset.avatar.url(:medium)) %>
+</p>
+
 
 <%= link_to 'Edit', edit_product_path(:id => @product.id, :business_id => @product.business.id) %> |
 <%= link_to 'Back', products_path(:business_id => @product.business.id) %>

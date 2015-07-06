@@ -1,0 +1,21 @@
+<h1>Offers</h1>
+
+<table>
+  <tr>
+    <th>Start at</th>
+    <th>End at</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @offers.each do |offer| %>
+    <tr>
+      <td><%= offer.start_at %></td>
+      <td><%= offer.end_at %></td>
+      <td><%= offer.price %></td>
+    </tr>
+  <% end %>
+</table>
+

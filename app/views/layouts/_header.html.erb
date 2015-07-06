@@ -1,17 +1,22 @@
 <% unless current_user %>
   <%= link_to "SIgn In", sign_in_path %> |
   <%= link_to "Sign Up", sign_up_path %>
+  <br/>
+  <%= link_to "Featured Products", root_path %> |
+  <%= link_to "Offers", offers_home_index_path %>
 <% else %>
   Hello: <%= current_user.email %> |
   <% if current_user.business_owner? %>
     <%= link_to "Profile", profile_path(current_user.profile) %> |
     <%= link_to "Manage Business", businesses_path %> |
-    <%= link_to "Manage Discounts" %> |
+    <%= link_to "Manage Offers", offers_path %> |
     <%= link_to "Manage Bookings" %> |
     <%= link_to "Manage Customers" %> |
     <%= link_to "Reports" %> |
   <% else %>
-
+    <%= link_to "Profile", profile_path(current_user.profile) %> |
+    <%= link_to "Business", customer_businesses_path %> |
+    <%= link_to "Offers", customer_offers_path %> |
   <% end %>
   <%= link_to "Sign Out", sign_out_path %>
 <% end %>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if current_user.present? and current_user.business_owner?
       businesses_path
     elsif current_user.present? and current_user.customer?
-      "/home/customer_dashboard"
+      customer_businesses_path
     else
       root_url
     end

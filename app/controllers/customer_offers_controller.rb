@@ -1,0 +1,2 @@
+class CustomerOffersController < ApplicationController
+end

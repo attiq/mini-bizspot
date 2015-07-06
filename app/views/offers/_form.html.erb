@@ -1,0 +1,44 @@
+<%= form_for(@offer) do |f| %>
+  <% if @offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+        <% @offer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="field">
+    <%= f.label :start_at %><br/>
+    <%= f.datetime_select :start_at %>
+  </div>
+  <div class="field">
+    <%= f.label :end_at %><br/>
+    <%= f.datetime_select :end_at %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br/>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <label>Product(s)</label><br/>
+    <%= select_tag :product_ids, options_from_collection_for_select(Product.where(:business_id => current_user.businesses.map(&:id)), :id, :name, f.object.products.map(&:id)), :multiple => true %>
+  </div>
+  <% f.object.asset ||= Asset.new %>
+  <%= f.fields_for :asset do |a| %>
+    <div class="field">
+      <label>Picture</label><br/>
+      <%= a.file_field :avatar %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
