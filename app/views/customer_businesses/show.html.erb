@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h2>DETAILS:</h2>
+
+<p>
+  <b>Business type:</b>
+  <%= @business.business_type.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @business.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @business.description %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @business.address %>
+</p>
+
+<p>
+  <b>Tag line:</b>
+  <%= @business.tag_line %>
+</p>
+
+<h2>LOCATION ON MAP:</h2>
+
+<p>
+  <b>Latitude:</b>
+  <%= @business.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @business.longitude %>
+</p>
+
+<h2>PRODUCTS:</h2>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  <% @business.products.each do |product| %>
+    <tr>
+      <td><%= image_tag(product.asset.avatar.url(:thumb)) %></td>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= link_to 'Book It', new_booking_path(:product_id => product.id) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'Back', customer_businesses_path %>

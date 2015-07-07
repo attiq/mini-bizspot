@@ -20,11 +20,8 @@
       <td><%= business.description %></td>
       <td><%= business.address %></td>
       <td><%= business.tag_line %></td>
-      <td><%= link_to 'Details'%></td>
+      <td><%= link_to 'Details', customer_business_path(business) %></td>
     </tr>
   <% end %>
 </table>
 
-<br/>
-
-<%= link_to 'New Business', new_business_path %>

@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   belongs_to :business
   has_one :asset, :as => :owner, :dependent => :destroy
   has_and_belongs_to_many :offers
+  has_many :bookings, :dependent => :destroy
 
   accepts_nested_attributes_for :asset, :allow_destroy => true
 

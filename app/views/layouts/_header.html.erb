@@ -10,13 +10,14 @@
     <%= link_to "Profile", profile_path(current_user.profile) %> |
     <%= link_to "Manage Business", businesses_path %> |
     <%= link_to "Manage Offers", offers_path %> |
-    <%= link_to "Manage Bookings" %> |
+    <%= link_to "Manage Bookings",bookings_path %> |
     <%= link_to "Manage Customers" %> |
     <%= link_to "Reports" %> |
   <% else %>
     <%= link_to "Profile", profile_path(current_user.profile) %> |
     <%= link_to "Business", customer_businesses_path %> |
     <%= link_to "Offers", customer_offers_path %> |
+    <%= link_to "Bookings", bookings_path %> |
   <% end %>
   <%= link_to "Sign Out", sign_out_path %>
 <% end %>

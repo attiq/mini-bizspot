@@ -1,5 +1,8 @@
 MiniBizspot::Application.routes.draw do
 
+  resources :bookings
+
+
   resources :offers
 
 

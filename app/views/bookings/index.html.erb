@@ -1,0 +1,46 @@
+<h1>Listing bookings</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Start at</th>
+    <th>End at</th>
+    <th>Description</th>
+    <th>Status</th>
+    <% if current_user.business_owner? %>
+      <th>User</th>
+      <th></th>
+    <% end %>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.product.name %></td>
+      <td><%= booking.start_at %></td>
+      <td><%= booking.end_at %></td>
+      <td><%= booking.description %></td>
+      <td><%= booking.status %></td>
+      <% if current_user.business_owner? %>
+        <td><%= booking.user.email %></td>
+        <td>
+          <% if booking.status == "pending" %>
+            <%= link_to 'Accept' %>|
+            <%= link_to 'Reject' %>
+          <% elsif booking.status == "accepted" %>
+            <%= link_to 'Reject' %>
+          <% else %>
+            <%= link_to 'Accept' %>
+          <% end %>
+        </td>
+      <% end %>
+      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+      <td><%= link_to 'Destroy', booking, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Booking', new_booking_path %>
