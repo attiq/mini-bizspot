@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @product = Product.find_by_id(params[:product_id])
   end
 
   def create
@@ -41,12 +42,13 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find_by_id(params[:product_id])
     @booking.destroy
     respond_with(@booking)
   end
 
   private
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 end

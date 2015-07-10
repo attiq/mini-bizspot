@@ -25,22 +25,23 @@
       <% if current_user.business_owner? %>
         <td><%= booking.user.email %></td>
         <td>
-          <% if booking.status == "pending" %>
-            <%= link_to 'Accept' %>|
-            <%= link_to 'Reject' %>
-          <% elsif booking.status == "accepted" %>
-            <%= link_to 'Reject' %>
+          <% if booking.status == "Pending" %>
+            <%= link_to 'Accept|Reject', edit_booking_path(:id => booking.id, :product_id => booking.product.id) %>|
+          <% elsif booking.status == "Accepted" %>
+            <%= link_to 'Reject', edit_booking_path(:id => booking.id, :product_id => booking.product.id) %>
           <% else %>
-            <%= link_to 'Accept' %>
+            <%= link_to 'Accept', edit_booking_path(:id => booking.id, :product_id => booking.product.id) %>
           <% end %>
         </td>
+      <% else %>
+        <td><%= link_to 'Edit', edit_booking_path(:id => booking.id, :product_id => booking.product.id) %></td>
       <% end %>
-      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-      <td><%= link_to 'Destroy', booking, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Destroy', booking_path(:id => booking.id, :product_id => booking.product.id), method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
 </table>
 
 <br/>
-
-<%= link_to 'New Booking', new_booking_path %>
+<% unless current_user.business_owner? %>
+  <%= link_to 'New Booking', new_booking_path %>
+<% end %>
